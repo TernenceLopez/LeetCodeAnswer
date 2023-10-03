@@ -2,8 +2,8 @@ package com.ustc.difficult;
 
 public class LeeCode2551 {
     public static void main(String[] args) {
-        int[] arr = new int[]{1,3,4,5,6,7,8};
-        int target = 10;
+        int[] arr = new int[]{1,3,4,7,8};
+        int target = 5;
 
         System.out.println(binarySearch(arr, target));
     }
