@@ -1,6 +1,8 @@
 package com.ustc.normal;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Deque;
 
 public class LeeCode1696 {
     public static void main(String[] args) {
@@ -9,13 +11,18 @@ public class LeeCode1696 {
     public static int maxResult(int[] nums, int k) {
         int n = nums.length;
         int[] dp = new int[n];
-        Arrays.fill(dp, Integer.MIN_VALUE);
-        dp[n-1] = nums[n-1];
+        Deque<Integer> queue = new ArrayDeque<>(); // 单调双端队列：队尾是最小值，队首是最大值
 
-        for(int i=n-2; i>=0; i--){
-            for(int j=i+1; j<=Math.min(n-1, i+k); j++){
-                dp[i] = Math.max(dp[i], nums[i]+dp[j]);
+        for(int i=n-1; i>=0; i--){
+            while(!queue.isEmpty() && dp[queue.peekLast()]<=dp[i]){
+                queue.pollLast();
             }
+            queue.addLast(i);
+
+            while(queue.peekFirst()>i+k){
+                queue.pollFirst();
+            }
+            dp[i] = dp[queue.peekFirst()] + nums[i];
         }
 
         return dp[0];
