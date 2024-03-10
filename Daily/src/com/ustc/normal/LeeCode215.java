@@ -5,8 +5,8 @@ public class LeeCode215 {
         findKthLargest(new int[]{3,2,3,1,2,4,5,5,6}, 4);
     }
     // 左闭右闭区间
-    public static void quickSort(int[] arr, int startIndex, int endIndex, int k){
-        if(startIndex > endIndex) return;
+    public static int quickSort(int[] arr, int startIndex, int endIndex, int k){
+        if(startIndex == endIndex) return arr[k];
 
         int baseLine = arr[startIndex]; // 基准元素
         int left = startIndex; // left不能直接赋值为startIndex+1，因为要保证[startIndex, left]全是小于等于baseline的元素，此时还不确定startIndex+1是否小于等于baseline；
@@ -37,16 +37,16 @@ public class LeeCode215 {
 
         //根据基准元素分两部分进行递归排序(right索引位置处的元素已经确定了)
         if(k<=right){
-            quickSort(arr, startIndex, right-1, k);
+            return quickSort(arr, startIndex, right-1, k);
         }else{ // k索引位置的元素在right索引的左边，所以right右半区间元素不需要排序了
-            quickSort(arr, right+1, endIndex, k);
+            return quickSort(arr, right+1, endIndex, k);
         }
     }
 
     public static int findKthLargest(int[] _nums, int k) {
         int n = _nums.length;
-        quickSort(_nums, 0, n - 1, n-k); // 返回第n-k小的元素
+        return quickSort(_nums, 0, n - 1, n-k); // 返回第n-k小的元素
 
-        return _nums[n-k];
+        // return _nums[n-k];
     }
 }
