@@ -1,5 +1,7 @@
 package WeightedRoundRobin;
 
+import java.lang.reflect.WildcardType;
+
 /**
  * 服务器对象
  * */
@@ -18,5 +20,9 @@ public class Server {
 
     public int getWeight(){
         return this.weight;
+    }
+
+    public void setWeight(int weight){
+        this.weight = weight;
     }
 }
