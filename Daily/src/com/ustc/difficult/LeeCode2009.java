@@ -7,7 +7,7 @@ import java.util.List;
 
 public class LeeCode2009 {
     public static void main(String[] args) {
-        System.out.println(minOperations(new int[]{41,33,29,33,35,26,47,24,18,28}));; // 预期结果: 5
+        System.out.println(minOperations(new int[]{41,33,29,33,35,26,47,24,18,28})); // 预期结果: 5
     }
 
     public static int minOperations(int[] nums) {
