@@ -1,6 +1,5 @@
 package com.ustc.normal;
 
-import java.lang.foreign.ValueLayout;
 import java.util.Arrays;
 
 public class LeeCode2369 {
